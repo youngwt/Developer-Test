@@ -18,7 +18,8 @@ namespace ShoppingCart.Data.Implementation
                 Artist = "The Beatles",
                 Price = 13.99d,
                 Title = "Abbey Road",
-                Year = 1969
+                Year = 1969,
+                ImageUrl = "https://m.media-amazon.com/images/I/81dUVKQDBEL._AC_SX466_.jpg"
             });
 
             _records.Add(1, new Record()
@@ -27,7 +28,8 @@ namespace ShoppingCart.Data.Implementation
                 Artist = "Oasis",
                 Price = 0.99d,
                 Title = "(What's The Story) Morning Glory",
-                Year = 1995
+                Year = 1995,
+                ImageUrl = "https://m.media-amazon.com/images/I/91s+CxEDriL._AC_UY327_FMwebp_QL65_.jpg"
             });
 
             _records.Add(2, new Record()
@@ -36,7 +38,8 @@ namespace ShoppingCart.Data.Implementation
                 Artist = "Embrace",
                 Price = 9.99d,
                 Title = "The Good Will Out",
-                Year = 1998
+                Year = 1998,
+                ImageUrl = "https://m.media-amazon.com/images/I/71UTWQ46vbL._AC_SX466_.jpg"
             });
         }
 
