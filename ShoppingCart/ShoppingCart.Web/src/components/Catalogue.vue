@@ -4,18 +4,19 @@
 
     <div v-if="error" class="error">{{ error }}</div>
 
-    <div v-if="post" class="content">
-        <b-card-group >
-          <record-card v-for="record in records[0]"
-            v-bind:key="record.id"
-            :artist="record.artist"
-            :title="record.title"
-            :imageUrl="record.imageUrl"
-            :price="record.price"  />
-        </b-card-group>
-    </div>
+      <div v-if="post" 
+      class="content fixed-top d-flex align-items-center justify-content-center"
+      style="bottom: 0; overflow-y: auto">
+          <b-card-group >
+            <record-card v-for="record in records[0]"
+              v-bind:key="record.id"
+              :artist="record.artist"
+              :title="record.title"
+              :imageUrl="record.imageUrl"
+              :price="record.price"  />
+          </b-card-group>
+      </div>
   </div>
-
 </template>
 
 <script>

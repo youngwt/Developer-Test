@@ -1,17 +1,20 @@
 <template>
   <div id="app">
+    <site-header />
     <catalogue-container />
   </div>
 </template>
 
 <script>
 
-import CatalogueContainer from './components/Catalogue.vue'
+import CatalogueContainer from './components/Catalogue.vue';
+import SiteHeader from './components/Header.vue'
 
 export default {
   name: 'App',
   components: {
-    CatalogueContainer
+    CatalogueContainer,
+    SiteHeader
   }
 }
 </script>
