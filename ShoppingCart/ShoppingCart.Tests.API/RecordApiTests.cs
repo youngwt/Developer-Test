@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ShoppingCart.Tests.API
 {
-    public class RecordApiTests
+    internal class RecordApiTests
     {
         private RecordsController _recordController;
 
