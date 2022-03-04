@@ -15,7 +15,7 @@ namespace ShoppingCart.API.Controllers
         }
 
         // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
+        [HttpGet("{code}")]
         public double Discount(string code)
         {
             switch (code)
