@@ -2,19 +2,22 @@
   <div id="app">
     <site-header />
     <catalogue-container />
+    <shopping-cart />
   </div>
 </template>
 
 <script>
 
 import CatalogueContainer from './components/Catalogue.vue';
-import SiteHeader from './components/Header.vue'
+import SiteHeader from './components/Header.vue';
+import ShoppingCart from './components/ShoppingCart.vue';
 
 export default {
   name: 'App',
   components: {
     CatalogueContainer,
-    SiteHeader
+    SiteHeader,
+    ShoppingCart
   }
 }
 </script>

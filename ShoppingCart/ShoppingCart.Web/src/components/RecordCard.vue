@@ -1,20 +1,20 @@
 <template>
   <b-card
-    :title="title"
-    :img-src="imageUrl"
-    :img-alt="title"
+    :title="item.title"
+    :img-src="item.imageUrl"
+    :img-alt="item.title"
     img-width="200px"
     img-height="200px"
     img-top
     style="max-width: 15rem;"
     class="mb-2">
     <b-card-text>
-      {{artist}} <br />
-      £{{price}} <br />
+      {{item.artist}} <br />
+      £{{item.price}} <br />
     </b-card-text>
 
     <template #footer>
-        <b-button href="#" variant="primary">Add to basket</b-button>
+        <b-button href="#" variant="primary" @click="addToCart(item)">Add to basket</b-button>
     </template>
     
   </b-card>
@@ -24,10 +24,17 @@
 export default {
   name: 'RecordCard',
   props: {
-    title: String,
-    imageUrl: String,
-    artist: String,
-    price: Number
+    item: {    
+      title: String,
+      imageUrl: String,
+      artist: String,
+      price: Number
+    }
+  },
+  methods: {
+    addToCart(item) {
+      this.$emit('update-cart', item);
+    }    
   }
 }
 </script>

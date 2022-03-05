@@ -5,22 +5,19 @@
     <div v-if="error" class="error">{{ error }}</div>
 
       <div v-if="post" 
-      class="content fixed-top d-flex align-items-center justify-content-center"
+      class="content d-flex align-items-center justify-content-center"
       style="bottom: 0; overflow-y: auto">
           <b-card-group >
             <record-card v-for="record in records[0]"
               v-bind:key="record.id"
-              :artist="record.artist"
-              :title="record.title"
-              :imageUrl="record.imageUrl"
-              :price="record.price"  />
+              :item="record"  />
           </b-card-group>
       </div>
   </div>
 </template>
 
 <script>
-/* eslint-disable */
+
 import RecordCard from './RecordCard.vue'
 
 export default {
@@ -38,7 +35,7 @@ export default {
    created() {
     this.loading = true;
     // GET request using fetch with async/await
-    const response =  fetch("https://localhost:7136/api/Records").then(async response => {
+    fetch("https://localhost:7136/api/Records").then(async response => {
         this.loading = false;
         const data =  await response.json();
         this.post = true;
