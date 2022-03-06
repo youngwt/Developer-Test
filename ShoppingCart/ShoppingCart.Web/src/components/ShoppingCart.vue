@@ -1,19 +1,20 @@
 <template>
     <b-container class="shoppingCart">        
-        <div class="basketContainer" v-if="this.$store.state.shoppingCart.length > 0">
+        <div class="basketContainer" v-if="!(this.$store.state.shoppingCart && Object.keys(this.$store.state.shoppingCart).length === 0 && Object.getPrototypeOf(this.$store.state.shoppingCart) === Object.prototype)">
             <h4>Basket</h4>
-            <b-row  v-for="cartItem in this.$store.state.shoppingCart" v-bind:key="cartItem.id">
+            
+            <b-row  v-for="(item, index) in this.$store.state.shoppingCart" :key="index">
                 <b-col>
-                    {{cartItem.title}}
+                    {{item.title}}
                 </b-col>
                 <b-col>
-                    {{cartItem.artist}}
+                    {{item.artist}}
                 </b-col>
                 <b-col>
-                    {{cartItem.quantity}}
+                    {{item.quantity}}
                 </b-col>
                 <b-col>
-                    @ {{cartItem.price}}
+                    @ {{item.price}}
                 </b-col>
             </b-row>
         </div>

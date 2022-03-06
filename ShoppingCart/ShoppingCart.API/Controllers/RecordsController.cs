@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShoppingCart.Data;
 using ShoppingCart.Data.Interface;
 
@@ -16,8 +15,7 @@ namespace ShoppingCart.API.Controllers
             _recordRepository = recordRepository;
         }
 
-        [HttpGet]
-        //[EnableCors("CorsPolicy")]
+        [HttpGet]     
         public IEnumerable<Record> Get()
         {
             return _recordRepository.GetAllRecords();

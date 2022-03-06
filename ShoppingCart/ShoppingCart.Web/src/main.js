@@ -18,28 +18,36 @@ Vue.use(Vuex)
 /* eslint-disable */
 const store = new Vuex.Store({
   state: {
-    count: 0,
-    shoppingCart: [],
-    discountMultiplier: 1 
+    shoppingCart: {},
+    discountMultiplier: 1,
+    discountCode: "" 
   },
   mutations: {
-    increment (state) {
-      state.count++
-    },
 
-    addToCart(state, payload) {
-      debugger;
-      let existingItem = state.shoppingCart.filter(obj => {
-        return obj.id === payload.id
-      })
+    addToCart(state, {id, item}) {
+      // debugger;
+      // let existingItem = state.shoppingCart.filter(obj => {
+      //   return obj.id === payload.id
+      // })
 
-      if(existingItem.length > 0)
-      {
-        existingItem[0].quantity++;
-      } else {
-        payload.quantity = 1;
-        state.shoppingCart.push(payload);
-      }      
+      // const index = state.shoppingCart.findIndex(item => item.id == payload.id)
+
+      // if(existingItem.length > 0)
+      // {
+      //   existingItem[0].quantity++;
+      //   state.shoppingCart[index] = existingItem;
+      // } else {
+        
+      //   payload.quantity = 1;
+      //   state.shoppingCart.push(payload);
+      // }  
+      //debugger;
+      item.quantity = ++item.quantity || 1;
+      
+      state.shoppingCart = {
+        ...state.shoppingCart,
+        [id] : {...item}
+      }
     },
 
     SetDiscount(newDiscount) {

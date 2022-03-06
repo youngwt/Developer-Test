@@ -14,7 +14,7 @@
     </b-card-text>
 
     <template #footer>
-        <b-button href="#" variant="primary" @click="addToCart(item)">Add to basket</b-button>
+        <b-button href="#" variant="primary" @click="addToCart(item.id, item)">Add to basket</b-button>
     </template>
     
   </b-card>
@@ -33,8 +33,8 @@ export default {
   },
 
     methods: {
-    addToCart(item) {
-      this.$store.commit('addToCart', item)
+    addToCart(id, item) {
+      this.$store.commit('addToCart', { id, item})
     }    
   }
 }
