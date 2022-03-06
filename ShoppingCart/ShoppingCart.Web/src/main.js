@@ -29,7 +29,17 @@ const store = new Vuex.Store({
 
     addToCart(state, payload) {
       debugger;
-      state.shoppingCart.push(payload);
+      let existingItem = state.shoppingCart.filter(obj => {
+        return obj.id === payload.id
+      })
+
+      if(existingItem.length > 0)
+      {
+        existingItem[0].quantity++;
+      } else {
+        payload.quantity = 1;
+        state.shoppingCart.push(payload);
+      }      
     },
 
     SetDiscount(newDiscount) {
