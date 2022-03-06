@@ -31,9 +31,10 @@ export default {
       price: Number
     }
   },
-  methods: {
+
+    methods: {
     addToCart(item) {
-      this.$emit('update-cart', item);
+      this.$store.commit('addToCart', item)
     }    
   }
 }

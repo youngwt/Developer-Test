@@ -1,25 +1,20 @@
 <template>
-    <div class="shoppingCart">
-        <h4>Basket</h4>
-
-        <b-table-lite v-if="cartItems.length > 0">
-        </b-table-lite>
-        <p v-else>
-            Put some records in!
-        </p>
+    <div class="shoppingCart">        
+        <div class="basketContainer" v-if="this.$store.state.shoppingCart.length > 0">
+            <h4>Basket</h4>
+            <b-row  v-for="cartItem in this.$store.state.shoppingCart" v-bind:key="cartItem.id">
+                <p> {{cartItem.title}} </p>
+            </b-row>
+        </div>
+        <div class="emptyBasketMessage" v-else>
+            Come on buy a record for the road
+        </div>
     </div>    
 </template>
 
 <script>
 
 export default {
-    name: "ShoppingCart",
-
-
-    data() {
-        return {
-            cartItems: []
-        }
-    }
+    name: "ShoppingCart"
 }
 </script>

@@ -16,9 +16,8 @@ namespace ShoppingCart.API.Controllers
             _recordRepository = recordRepository;
         }
 
-        // GET: api/<ValuesController>
         [HttpGet]
-        [EnableCors("CorsPolicy")]
+        //[EnableCors("CorsPolicy")]
         public IEnumerable<Record> Get()
         {
             return _recordRepository.GetAllRecords();

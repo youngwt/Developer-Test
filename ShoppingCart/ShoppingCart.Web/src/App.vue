@@ -9,7 +9,7 @@
 <script>
 
 import CatalogueContainer from './components/Catalogue.vue';
-import SiteHeader from './components/Header.vue';
+import SiteHeader from './components/SiteHeader.vue';
 import ShoppingCart from './components/ShoppingCart.vue';
 
 export default {
@@ -18,7 +18,7 @@ export default {
     CatalogueContainer,
     SiteHeader,
     ShoppingCart
-  }
+  },
 }
 </script>
 

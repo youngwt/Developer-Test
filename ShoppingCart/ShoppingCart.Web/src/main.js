@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
@@ -13,6 +14,37 @@ Vue.use(IconsPlugin)
 
 Vue.config.productionTip = false
 
+Vue.use(Vuex)
+/* eslint-disable */
+const store = new Vuex.Store({
+  state: {
+    count: 0,
+    shoppingCart: [],
+    discountMultiplier: 1 
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    },
+
+    addToCart(state, payload) {
+      debugger;
+      state.shoppingCart.push(payload);
+    },
+
+    SetDiscount(newDiscount) {
+      state.discountMultiplier = newDiscount;
+    }
+  }
+})
+
+
+
 new Vue({
   render: h => h(App),
+  store: store
 }).$mount('#app')
+
+
+
+
