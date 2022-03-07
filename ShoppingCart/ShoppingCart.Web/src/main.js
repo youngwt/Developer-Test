@@ -25,23 +25,6 @@ const store = new Vuex.Store({
   mutations: {
 
     addToCart(state, {id, item}) {
-      // debugger;
-      // let existingItem = state.shoppingCart.filter(obj => {
-      //   return obj.id === payload.id
-      // })
-
-      // const index = state.shoppingCart.findIndex(item => item.id == payload.id)
-
-      // if(existingItem.length > 0)
-      // {
-      //   existingItem[0].quantity++;
-      //   state.shoppingCart[index] = existingItem;
-      // } else {
-        
-      //   payload.quantity = 1;
-      //   state.shoppingCart.push(payload);
-      // }  
-      //debugger;
       item.quantity = ++item.quantity || 1;
       
       state.shoppingCart = {
@@ -52,6 +35,16 @@ const store = new Vuex.Store({
 
     SetDiscount(newDiscount) {
       state.discountMultiplier = newDiscount;
+    },
+
+    setQuantity(state, {id, item, value})
+    {
+      item.quantity = value;
+      
+      state.shoppingCart = {
+        ...state.shoppingCart,
+        [id] : {...item}
+      }
     }
   }
 })
