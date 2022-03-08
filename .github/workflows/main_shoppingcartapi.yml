@@ -23,7 +23,7 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        working-directory: shoppingCart/ShoppingCart.API/ShoppingCart.API.csproj
+        working-directory: ShoppingCart\ShoppingCart.API\ShoppingCart.API.csproj
         run: dotnet build --configuration Release
 
       - name: dotnet publish
