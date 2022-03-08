@@ -14,7 +14,7 @@
                         <b-input type="number" :value="item.quantity" :min="0" @change="setQuantity($event, item.id, item)"/>
                     </b-col>
                     <b-col >
-                        <b-icon-trash @click="remove(item.id, item)"></b-icon-trash>
+                        <b-icon-trash @click="remove(item.id)"></b-icon-trash>
                     </b-col>
                     <b-col>
                         @ {{item.price}}
@@ -73,9 +73,9 @@ export default {
     },
 
   methods: {
-      remove(id, item)
+      remove(id)
       {
-          this.$store.commit('removeFromCart', {id, item })
+          this.$store.commit('removeFromCart', {id })
       },
 
       totalBeforeDiscount()

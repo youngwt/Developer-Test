@@ -23,17 +23,27 @@ const store = new Vuex.Store({
   mutations: {
 
     addToCart(state, {id, item}) {
-      debugger;
-      item.quantity = ++item.quantity || 1;
+
+      // check if exists already
+      let currentItem = state.shoppingCart[id];
       
+      // if exists add 1 to quantity, else initialise a clone
+      if(currentItem)
+      {
+        currentItem.quantity = ++currentItem.quantity;
+      } else {
+        currentItem = {...item}
+        currentItem.quantity = 1;
+      }
+
       state.shoppingCart = {
         ...state.shoppingCart,
-        [id] : {...item}
+        [id] : {...currentItem}
       }
     },
 
-    removeFromCart(state, {id, item})
-    {
+    removeFromCart(state, {id})
+    {      
       const {[id] : removed, ...rest} = state.shoppingCart;
       state.shoppingCart = rest;
     },
