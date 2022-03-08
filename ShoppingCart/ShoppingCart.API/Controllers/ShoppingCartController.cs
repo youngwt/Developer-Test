@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShoppingCart.Data.Interface;
 
 namespace ShoppingCart.API.Controllers
 {
@@ -6,18 +7,23 @@ namespace ShoppingCart.API.Controllers
     [ApiController]
     public class ShoppingCartController : ControllerBase
     {
-        // GET api/<ValuesController>/5
+        private readonly IDiscountRepository _discountRepository;
+
+        public ShoppingCartController(IDiscountRepository discountRepository)
+        {
+            _discountRepository = discountRepository;
+        }
+
+        /// <summary>
+        /// Returns the discount multiplier expressed in the range 0-1
+        /// </summary>
+        /// <remarks> Returning the default 1 effectively states that there is no discount for the code</remarks>
+        /// <param name="code">The discount code</param>
+        /// <returns>Discount multiplier between 0 and 1 </returns>
         [HttpGet("discount/{code}")]
         public double Discount(string code)
         {
-            switch (code)
-            {
-                case string s when s.Equals("rkid", StringComparison.OrdinalIgnoreCase): 
-                    return 0.05;
-                case string s when s.Equals("madferit", StringComparison.OrdinalIgnoreCase):
-                    return 0.5;
-                    default: return 1;
-            }          
+            return _discountRepository.GetDiscount(code);
         }
 
         // POST api/<ValuesController>

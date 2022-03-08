@@ -12,7 +12,7 @@ namespace ShoppingCart.API.Tests
         [SetUp]
         public void Setup()
         {
-            _controller = new ShoppingCartController();
+            _controller = new ShoppingCartController(new DiscountRepository());
         }
 
         [TestCase("rkid", 0.05)]
