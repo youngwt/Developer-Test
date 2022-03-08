@@ -14,16 +14,38 @@
                         <b-input type="number" :value="item.quantity" :min="0" @change="setQuantity($event, item.id, item)"/>
                     </b-col>
                     <b-col >
-                        <b-icon-trash @click="remove(index)"></b-icon-trash>
+                        <b-icon-trash @click="remove(item.id, item)"></b-icon-trash>
                     </b-col>
                     <b-col>
                         @ {{item.price}}
                     </b-col>
                 </b-row>
             </div>
-            <div>
-                Total: £{{totalBeforeDiscount()}}
-            </div>
+            <b-row class="align-items-center">
+                <b-col>
+                    Total: £{{totalBeforeDiscount()}}
+                </b-col>
+            </b-row>
+            <b-row class="align-items-center" v-if="!this.isValidDiscountCode">
+                  
+                    <b-col>                                      
+                        <b-form-input v-model="discountCode" type="text" placeholder="Discount code"></b-form-input>                    
+                    </b-col>
+                    <b-col>
+                        <b-button type="button" @click="onSubmitDiscountCode" variant="primary">Apply</b-button>
+                    </b-col>
+                               
+            </b-row>
+            <b-row v-else-if="this.showDiscountError">
+                <b-col>
+                    Discount Code could not be applied    
+                </b-col>
+            </b-row>
+            <b-row v-else>
+                <b-col>
+                    After Discount ({{renderDiscount()}} off): £{{totalAfterDiscount()}} 
+                </b-col>
+            </b-row>
         </div>
         <div class="emptyBasketMessage" v-else>
             Come on buy a record for the road
@@ -39,10 +61,21 @@ export default {
       components: {
     BIconTrash,
   },
+
+    data() {
+        return {
+            discountMultiplier: 1,
+            discountCode: "",
+            isValidDiscountCode: false,
+            showDiscountError: false,
+            error: null 
+        }
+    },
+
   methods: {
-      remove(index)
+      remove(id, item)
       {
-          alert(index);
+          this.$store.commit('removeFromCart', {id, item })
       },
 
       totalBeforeDiscount()
@@ -55,12 +88,46 @@ export default {
                     total += this.$store.state.shoppingCart[key].price * this.$store.state.shoppingCart[key].quantity;
                 }                
             }  
-            return total        
+            return  total.toFixed(2)        
+      },
+
+      totalAfterDiscount()
+      {
+          let totalBeforeDiscount = this.totalBeforeDiscount()
+
+          return (totalBeforeDiscount * this.discountMultiplier).toFixed(2);
+      },
+
+      renderDiscount()
+      {
+          return `${((1-this.discountMultiplier)*100).toFixed(0)}%`
       },
 
       setQuantity(value, id, item)
       {
           this.$store.commit('setQuantity', { id, item, value})
+      },
+
+      onSubmitDiscountCode()
+      {
+        fetch(`https://localhost:7136/api/cart/discount/${this.discountCode}`).then(async response => {
+            const body =  await response.text();
+            
+            this.discountMultiplier = parseFloat(body);
+            
+            if(this.discountMultiplier > 0 && this.discountMultiplier < 1)
+            {
+                this.isValidDiscountCode = true;
+                this.showDiscountError = false;
+            } else {
+                this.isValidDiscountCode = false;
+                this.showDiscountError = true;
+            }
+
+        }).catch(error => {
+            this.error = error
+            this.isValidDiscountCode = false;
+        });
       }
   }
 }

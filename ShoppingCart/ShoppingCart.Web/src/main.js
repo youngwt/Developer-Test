@@ -19,12 +19,11 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     shoppingCart: {},
-    discountMultiplier: 1,
-    discountCode: "" 
   },
   mutations: {
 
     addToCart(state, {id, item}) {
+      debugger;
       item.quantity = ++item.quantity || 1;
       
       state.shoppingCart = {
@@ -33,12 +32,15 @@ const store = new Vuex.Store({
       }
     },
 
-    SetDiscount(newDiscount) {
-      state.discountMultiplier = newDiscount;
+    removeFromCart(state, {id, item})
+    {
+      const {[id] : removed, ...rest} = state.shoppingCart;
+      state.shoppingCart = rest;
     },
 
     setQuantity(state, {id, item, value})
     {
+      debugger;
       item.quantity = value;
       
       state.shoppingCart = {

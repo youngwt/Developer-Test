@@ -6,16 +6,8 @@ namespace ShoppingCart.API.Controllers
     [ApiController]
     public class ShoppingCartController : ControllerBase
     {
-
-        // GET: api/<ValuesController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         // GET api/<ValuesController>/5
-        [HttpGet("{code}")]
+        [HttpGet("discount/{code}")]
         public double Discount(string code)
         {
             switch (code)
