@@ -122,7 +122,7 @@ export default {
 
       onSubmitDiscountCode()
       {
-        fetch(`https://localhost:7136/api/cart/discount/${this.discountCode}`).then(async response => {
+        fetch(process.env.VUE_APP_BASE_URL+`/api/cart/discount/${this.discountCode}`).then(async response => {
             const body =  await response.text();
             this.discountMultiplier = parseFloat(body);
             

@@ -29,7 +29,7 @@ namespace ShoppingCart.Data.Implementation
                 Price = 0.99d,
                 Title = "(What's The Story) Morning Glory",
                 Year = 1995,
-                ImageUrl = "https://m.media-amazon.com/images/I/91s+CxEDriL._AC_UY327_FMwebp_QL65_.jpg"
+                ImageUrl = "https://m.media-amazon.com/images/I/91s+CxEDriL._AC_UY218_.jpg"
             });
 
             _records.Add(2, new Record()

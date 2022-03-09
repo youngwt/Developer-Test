@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>6130ceb0-bf86-4421-a1d3-62ecd58faedf</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <UseAppHost>false</UseAppHost>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,5 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ShoppingCart.Data\ShoppingCart.Data.csproj" />
   </ItemGroup>
+
 
 </Project>
