@@ -12,6 +12,7 @@ namespace ShoppingCart.Data.Implementation
             _records = new Dictionary<int, Record>();
 
             // Just to get the ball rolling add a few albums
+            // going to scrape the covers from amazon for now - in real life would store in blob storage
             _records.Add(0, new Record()
             {
                 Id = 0,

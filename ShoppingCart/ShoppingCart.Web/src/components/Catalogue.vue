@@ -34,7 +34,7 @@ export default {
   },
    created() {
     this.loading = true;
-    fetch(process.env.VUE_APP_BASE_URL+"/api/Records").then(async response => {
+    fetch(`${process.env.VUE_APP_BASE_URL}/api/Records`).then(async response => {
         this.loading = false;
         const data =  await response.json();
         this.post = true;
