@@ -5,10 +5,10 @@
 This project is comprised of 2 main parts, a dotnet 6 API for the backend and a Vue project for the front end. 
 To run the API project locally use visual studio to open the ShoppingCart solution and build and run the project.
 To run the front end you will need to have up to date versions of node, npm and the Vue cli
-
+To install the Vue cli:
 ` npm install -g @vue/cli `
 
-To run the project in a terminal window:
+To run the project in a terminal window go to the ShoppingCart.Web folder:
 
 ` npm run serve `
 
@@ -18,7 +18,10 @@ The API is currently configured to run on port 7136
 ## Testing
 
 The API has unit tests that pass locally. There are also Github actions that build the API project in a CD pipeline.
-The front end has been manually tested on chrome
+The project has been tested with the front and back end compiled and running on Windows/Chrome and intel mac (macOS Catelina) / Safari
+
+## Known issues
+The images for the albums are scraped from Amazon, they are subject to change at any time. Because no back end database has been implemeneted, new links must be pasted into the image property in the RecordRepository class.
 
 ## Future development
 
