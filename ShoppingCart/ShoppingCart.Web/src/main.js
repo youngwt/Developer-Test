@@ -15,7 +15,7 @@ Vue.use(IconsPlugin)
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
-/* eslint-disable */
+
 const store = new Vuex.Store({
   state: {
     shoppingCart: {},
@@ -43,14 +43,15 @@ const store = new Vuex.Store({
     },
 
     removeFromCart(state, {id})
-    {      
+    {   
+      // don't care that we are not using removed
+      // eslint-disable-next-line   
       const {[id] : removed, ...rest} = state.shoppingCart;
       state.shoppingCart = rest;
     },
 
     setQuantity(state, {id, item, value})
     {
-      debugger;
       item.quantity = value;
       
       state.shoppingCart = {
