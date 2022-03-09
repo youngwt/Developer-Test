@@ -15,6 +15,10 @@ namespace ShoppingCart.API.Controllers
             _recordRepository = recordRepository;
         }
 
+        /// <summary>
+        /// Gets the complete list of records
+        /// </summary>
+        /// <returns>A list of all available albums</returns>
         [HttpGet]     
         public IEnumerable<Record> Get()
         {

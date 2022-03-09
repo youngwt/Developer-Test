@@ -25,11 +25,5 @@ namespace ShoppingCart.API.Controllers
         {
             return _discountRepository.GetDiscount(code);
         }
-
-        // POST api/<ValuesController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
     }
 }
